@@ -33,13 +33,13 @@
             <div class="custom-scroll custom-scroll-light">
                 <ul class="sidebar-menu">
                     <!-- <li class="menu-title">Main</li> -->
-                    <li>
+                    <li class="active">
                         <a href="/customer" class="waves-effect  waves-light">
                             <span class="s-icon"><i class="ti-user"></i></span>
                             <span class="s-text">Customer</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="/template" class="waves-effect  waves-light">
                             <span class="s-icon"><i class="ti-file"></i></span>
                             <span class="s-text">Templates</span>
