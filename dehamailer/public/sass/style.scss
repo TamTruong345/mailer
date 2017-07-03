@@ -1,0 +1,160 @@
+@charset "UTF-8";
+@import "template";
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.dropdown-item {
+    font-size: 16px;
+}
+.btn {
+	font-size: 1.1rem;
+}
+.btn-search {
+	font-size: 1rem;
+}
+.panel {
+    margin-bottom: 24px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    &.panel-default {
+	    border-color: #ddd;
+	}
+    .panel-body {
+	    padding: 15px;
+	}
+	.panel-title{
+		margin-bottom: 10px;
+	}
+	.form-label{
+		font-size: 1rem;
+	}
+}
+#mailSearch-form{
+	.btn{
+		display: inline-block !important;
+		@media screen and (min-width: 768px){
+			width: 100%;
+			margin-bottom: 24px;
+		}
+		@media screen and (min-width: 1144px){
+			margin-bottom: 12px;
+		}
+	}
+	.row{
+		margin-bottom: 10px;
+	}
+}
+#addCustomerModal{
+	.modal-body{
+		.col-md-9{
+			.row:nth-child(2){
+				margin: 10px -15px;
+			}
+		}
+		.col-md-3{
+			.row:nth-child(2){
+				margin: 10px -15px;
+			}
+		}
+	}
+	.form-group{
+		.col-sm-3,.col-sm-9{
+			width: 100%;
+		}
+		.col-sm-3{
+			@media screen and (min-width: 576px){
+				width: 25%;
+			}
+		}
+		.col-sm-9{
+			@media screen and (min-width: 576px){
+				width: 75%;
+			}
+		}
+	}
+}
+#addMailTemplateModal{
+	.row{
+		margin-bottom: 10px;
+	}
+	.row:last-child{
+		margin-bottom: 0;
+	}
+}
+#smtp-form, #commonSetting-form{
+	.row{
+		margin-bottom: 10px;
+	}
+	.row:last-child{
+		margin-bottom: 0;
+	}
+}
+.visible-xs{
+	display:inline-block;
+	@media screen and (min-width: 842px) {
+		display: none;
+	}
+}
+.hidden-xs{
+	display: none;
+	@media screen and (min-width: 842px) {
+		display:inline-block;
+  	}
+}
+.table{
+	margin-bottom: 0;
+}
+.table-responsive{
+	.btn{
+		display: block;
+		@media screen and (min-width: 842px){
+			display: inline-block;
+		}
+	}
+}
+.setting-panel{
+	@media  screen and (min-width:768px) {
+		min-height: 258px;
+	}
+	@media  screen and (min-width:854px) {
+		min-height: 235px;
+	}
+	@media  screen and (min-width:992px) {
+		min-height: 258px;
+	}
+	@media  screen and (min-width:1004px) {
+		min-height: 235px;
+	}
+}
+.modal-content:before,
+.modal-content:after,
+.form-group:before,
+.form-group:after,{
+	content:'';
+	display: table;
+}
+.modal-content:after,
+.form-group:after{
+	clear:both;
+}
+.modal-content{
+	padding-top: 14px;
+}
+#smtp-form, #common-form{
+	.btn{
+		display: block;
+		margin: auto;
+		@media screen and (min-width: 768px){
+			display: inline-block;
+		}
+	}
+}
