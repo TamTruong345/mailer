@@ -45,6 +45,13 @@ class Template extends Model {
         $this->where('template_id', $template_id)
                     ->update(['template_deleted' => 1]);
     }
+
+    protected function editRecord($data) {
+        unset($data['_token']);
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        $this->where('template_id', $data['template_id'])
+            ->update($data);
+    }
 }
 
 ?>
