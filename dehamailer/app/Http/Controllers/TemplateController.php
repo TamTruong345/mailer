@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Template;
 use Illuminate\Http\Request;
+use App\Http\Flash;
 
 class TemplateController extends Controller
 {
@@ -34,7 +35,17 @@ class TemplateController extends Controller
         $filePath = $this->uploadFileAttachment();
         $data['template_attachment'] = $filePath;
         Template::addNewRecord($data);
+        flash('Add template success!');
         return redirect()->route('template.index');
+    }
+
+    /*
+     * Destroy template
+     *
+     * @param int template_id
+     */
+    public function destroy($template_id) {
+        Template::deleteTemplate($template_id);
     }
 
     /*

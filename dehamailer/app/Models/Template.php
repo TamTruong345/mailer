@@ -12,7 +12,8 @@ class Template extends Model {
      * @var string
      */
     protected $table = 'templates';
-
+    protected $primaryKey = 'template_id';
+    
     /*
      * Get a listing of templates with condition
      *
@@ -33,6 +34,16 @@ class Template extends Model {
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['template_deleted'] = 0;
         return $this->insertGetId($data);
+    }
+    
+    /*
+     * Delete item of templates table
+     * 
+     * @param int template_id
+     */
+    protected function deleteTemplate($template_id) {
+        $this->where('template_id', $template_id)
+                    ->update(['template_deleted' => 1]);
     }
 }
 
