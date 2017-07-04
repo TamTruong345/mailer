@@ -14,10 +14,6 @@ if (!$validated) {
 	die ("Not authorized");
 }
 
-// If arrives here, is a valid user.
-echo "<p>Welcome $user.</p>";
-echo "<p>Congratulation, you are into the system.</p>";
-
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
