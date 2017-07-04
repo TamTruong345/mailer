@@ -24,7 +24,7 @@ class TemplateController extends Controller
         $templates = Template::getList();
         return view('templates.index', array('templates' => $templates));
     }
-
+    
     /*
      * Store a new template
      *
@@ -38,6 +38,22 @@ class TemplateController extends Controller
         flash('Add template success!');
         return redirect()->route('template.index');
     }
+    
+    /*
+     * edit template
+     * 
+     * @return Response
+     */
+    public function update() {
+        $data = $this->request->toArray();
+        $filePath = $this->uploadFileAttachment();
+        if ( !empty($filePath) ) {
+            $data['template_attachment'] = $filePath;   
+        }
+        Template::editRecord($data);
+        flash('Edit template success!');
+        return redirect()->route('template.index');
+    }
 
     /*
      * Destroy template
@@ -46,6 +62,12 @@ class TemplateController extends Controller
      */
     public function destroy($template_id) {
         Template::deleteTemplate($template_id);
+    }
+
+
+    public function show($template_id) {
+        $templateDetail = Template::where('template_id', $template_id)->first();
+        return json_encode($templateDetail);
     }
 
     /*

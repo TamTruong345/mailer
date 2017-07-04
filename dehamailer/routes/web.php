@@ -13,6 +13,8 @@
 
 Route::get('/', 'CustomerController@index');
 
+Route::post('/template/update', 'TemplateController@update');
+
 Route::resource('customer', 'CustomerController');
 
 Route::resource('template', 'TemplateController');
