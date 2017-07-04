@@ -74,44 +74,45 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="gridSystemModalLabel">Add template</h4>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="modal-content">
                         <div class="form-group">
                             <label for="modalAddTemplateSubject" class="col-sm-3 control-label">Subject</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="modalAddTemplateSubject">
+                                <input type="text" class="form-control" name="template_subject" id="modalAddTemplateSubject">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="modalAddTemplateContent" class="col-sm-3 control-label">Content</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" id="modalAddTemplateContent" rows="10"></textarea>
+                                <textarea class="form-control" name="template_content" id="modalAddTemplateContent" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="modalAddTemplateAttachment" class="col-sm-3 control-label">Attachment</label>
                             <div class="col-sm-9">
-                                <input type="file" class="form-control" id="modalAddTemplateAttachment">
+                                <input type="file" class="form-control" name="template_attachment" id="modalAddTemplateAttachment">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="modalAddTemplateMailCC" class="col-sm-3 control-label">Mail CC</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="modalAddTemplateMailCC">
+                                <input type="text" class="form-control" name="template_mail_cc" id="modalAddTemplateMailCC">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="modalAddTemplateStatus" class="col-sm-3 control-label">Active</label>
                             <div class="col-sm-9">
-                                <input type="radio" name="templates_status" checked="true"> Yes
-                                <input type="radio" name="templates_status"> No
+                                <input type="radio" name="template_status" value="active" checked="true"> Yes
+                                <input type="radio" name="template_status" value="unactive"> No
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="form-group">
                             <div class="text-right">
-                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>

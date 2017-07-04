@@ -13,8 +13,20 @@ class Template extends Model {
      */
     protected $table = 'templates';
 
+    /*
+     * Get a listing of templates with condition
+     *
+     * @return array Response
+     */
     protected function getList() {
-        return DB::table('templates')->where('template_id', '=', 1)->get();
+        return $this->where('template_deleted', '=', 0)->get();
+    }
+
+    protected function addNewRecord($data) {
+        unset($data['_token']);
+        $data['created_at'] = date('Y-m-d H:i:s');
+        $data['template_deleted'] = 0;
+        return $this->insertGetId($data);
     }
 }
 
