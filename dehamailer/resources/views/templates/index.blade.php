@@ -1,3 +1,28 @@
+<style>
+    .loader {
+        border: 5px solid #f3f3f3; /* Light grey */
+        border-top: 5px solid #3498db; /* Blue */
+        border-bottom: 5px solid #3498db;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        position: fixed;
+        top: 100px;
+        left: 50%;
+    }
+
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 @extends('layouts.app')
 
 @section('title', 'Page Title')
@@ -8,6 +33,8 @@
 
 @section('content')
     <!-- Content -->
+    @include('flash::message')
+    <div class="loader" style="display: none"></div>
     <div class="container-fluid">
         <h4>Template</h4>
         <ol class="breadcrumb no-bg m-b-1">
@@ -44,7 +71,7 @@
                                     <td class="text-center"><input type="checkbox" name="templates_status" <?php echo ( $tpl->template_status == 'active' )? 'checked' : '' ?>></td>
                                     <td class="text-center">
                                         <a href="#" class="btn btn-info" data-toggle="modal" data-target="#editTemplateModal"><i class="fa fa-pencil-square-o visible-xs"></i><span class="hidden-xs">Edit</span></a>
-                                        <a href="#" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash visible-xs"></i><span class="hidden-xs">Delete</span></a>
+                                        <a href="#" class="btn btn-danger" onclick="deleteTemplate({{ $tpl->template_id }})"><i class="fa fa-trash visible-xs"></i><span class="hidden-xs">Delete</span></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -103,7 +130,7 @@
                     <div class="modal-footer">
                         <div class="form-group">
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" id="submitFormAddTemplate"  class="btn btn-primary">Save</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -198,3 +225,5 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 @endsection
+
+<script type="text/javascript" src="{{ URL::asset('js/customer.js') }}"></script>
