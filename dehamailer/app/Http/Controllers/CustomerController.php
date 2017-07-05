@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\DB;
+use App\Models\Customer;
+use Illuminate\Http\Request;
+use App\Http\Flash;
 
 class CustomerController extends Controller
 {
@@ -16,7 +14,16 @@ class CustomerController extends Controller
 	 * @return Response
 	 */
 	public function index() {
-		$customers = DB::table('customers')->get();
+        $customers = Customer::getList();
 		return view('customers.index', array('customers' => $customers));
 	}
+
+	public function store(Request $request)
+    {
+        $data = $request->toArray();
+        Customer::addNewRecord($data);
+        flash('Add customer success!');
+        return redirect()->route('customer.index');
+    }
+
 }

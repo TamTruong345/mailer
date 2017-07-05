@@ -131,26 +131,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center"> <input type="checkbox" name=""> </td>
-                                <td>Deha Solutions</td>
-                                <td>fsdfsdf</td>
-                                <td><a href="anhnm@deha.vn">anhnm@deha.vn</a></td>
-                                <td>2017/7/01 15:35</td>
-                                <td>2017/7/01</td>
-                                <td class="text-center"><a href="#" class="btn btn-info"><i class="fa fa-pencil-square-o visible-xs"></i><span class="hidden-xs">Edit</span></a>
-                                    <a href="#" class="btn btn-danger"><i class="fa fa-trash visible-xs"></i><span class="hidden-xs">Delete</span></a></td>
-                            </tr>
-                            <tr>
-                                <td class="text-center"> <input type="checkbox" name=""> </td>
-                                <td>Deha Solutions</td>
-                                <td>fsdfsdf</td>
-                                <td><a href="anhnm@deha.vn">anhnm@deha.vn</a></td>
-                                <td>2017/7/01 15:35</td>
-                                <td>2017/7/01</td>
-                                <td class="text-center"><a href="#" class="btn btn-info"><i class="fa fa-pencil-square-o visible-xs"></i><span class="hidden-xs">Edit</span></a>
-                                    <a href="#" class="btn btn-danger"><i class="fa fa-trash visible-xs"></i><span class="hidden-xs">Delete</span></a></td>
-                            </tr>
+                                @foreach ($customers as $cus)
+                                    <tr>
+                                        <td class="text-center"> <input type="checkbox" name=""> </td>
+                                        <td>{{ $cus->customer_name }}</td>
+                                        <td>{{ $cus->customer_fullname }}</td>
+                                        <td>{{ $cus->customer_mail }}</td>
+                                        <td>{{ $cus->customer_last_sent_mail }}</td>
+                                        <td>{{ $cus->created_at }}</td>
+                                        <td class="text-center"><a href="#" class="btn btn-info" ><i class="fa fa-pencil-square-o visible-xs"></i><span class="hidden-xs">Edit</span></a>
+                                            <a href="#" class="btn btn-danger" ><i class="fa fa-trash visible-xs"></i><span class="hidden-xs">Delete</span></a></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -207,12 +199,13 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="gridSystemModalLabel">Add customer</h4>
                     </div>
-                    <form class="form-horizontal">
+                    <form action="" method="post" name="formAddCustomer" class="form-horizontal">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="modal-content">
                             <div class="form-group">
                                 <label for="modalAddCustomerName" class="col-sm-3 control-label">Company name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="modalAddCustomerName">
+                                    <input type="text" name="customer_name" class="form-control" id="modalAddCustomerName">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -224,14 +217,14 @@
                             <div class="form-group">
                                 <label for="modalAddCustomerMail" class="col-sm-3 control-label">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="modalAddCustomerMail">
+                                    <input  class="form-control" id="modalAddCustomerMail">
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <div class="form-group">
                                 <div class="text-right">
-                                    <button type="button" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
